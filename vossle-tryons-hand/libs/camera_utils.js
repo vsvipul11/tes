@@ -56,8 +56,8 @@
 
     function p(a, b) {
         this.video = a;
-        this.a = 0;
-        this.b = Object.assign(Object.assign({}, n), b)
+        this.h = 0;
+        this.g = Object.assign(Object.assign({}, n), b)
     }
 
     function q(a) {
@@ -76,66 +76,29 @@
 
     function r(a) {
         var b = null;
-        a.video.paused || a.video.currentTime === a.a || (a.a = a.video.currentTime, b = a.b.onFrame());
+        a.video.paused || a.video.currentTime === a.h || (a.h = a.video.currentTime, b = a.g.onFrame());
         b ? b.then(function() {
             q(a)
         }) : q(a)
     }
     p.prototype.start = function() {
         var a = this;
-        navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-        // navigator.mediaDevices && navigator.mediaDevices.getUserMedia || alert("No navigator.mediaDevices.getUserMedia exists.");
-        var b = this.b;
-        if (navigator.mediaDevices) {
-            return navigator.mediaDevices.getUserMedia({
-                video: {
-                    facingMode: 'environement',
-                    width: b.width,
-                    height: b.height
-                }
-            }).then(function(c) {
-                t(a, c)
-            }).catch(function(c) {
-                console.error("Failed to acquire camera feed: " + c);
-                alert("Failed to acquire camera feed: " + c);
-                throw c;
-            })
-        } else {
-            navigator.getWebcam({
-                video: {
-                    facingMode: 'environment',
-                    width: b.width,
-                    height: b.height
-                }
-            }).then(function(c) {
-                t(a, c)
-            }).catch(function(c) {
-                console.error("Failed to acquire camera feed: " + c);
-                alert("Failed to acquire camera feed: " + c);
-                throw c;
-            })
-        }
+        navigator.mediaDevices && navigator.mediaDevices.getUserMedia || alert("No navigator.mediaDevices.getUserMedia exists.");
+        var b = this.g;
+        return navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: {exact : "environment"},
+                width: b.width,
+                height: b.height
+            }
+        }).then(function(c) {
+            t(a, c)
+        }).catch(function(c) {
+            console.error("Failed to acquire camera feed: " + c);
+            alert("Failed to acquire camera feed: " + c);
+            throw c;
+        })
     };
-    p.prototype.stop = function() {
-        /// stop all stram connected tyo this video object
-        var stream = this.video.srcObject;
-        if (stream) {
-            stream.getTracks().forEach(function(track) {
-                console.log(track);
-                track.stop();
-            });
-        }
-    }
-    p.prototype.switch = function() {
-        if (this.b.facingMode === 'environment') {
-            this.b.facingMode = 'environment';
-        } else {
-            this.b.facingMode = 'environment';
-        }
-        document.getElementById('vid_container').classList.toggle('mirror')
-        this.stop();
-        this.start();
-    }
     var u = ["Camera"],
         v = m;
     u[0] in v || "undefined" == typeof v.execScript || v.execScript("var " + u[0]);
