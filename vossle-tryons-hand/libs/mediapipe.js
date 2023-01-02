@@ -183,7 +183,7 @@ const hands = new Hands({
     }
 });
 hands.setOptions({
-    selfieMode: 1,
+    selfieMode: false,
     maxNumHands: 1,
     minDetectionConfidence: 0.8,
     minTrackingConfidence: 0.8
@@ -229,7 +229,7 @@ camera.start()
 // options.
 const controlsElement = document.getElementsByClassName('output_canvas')[0];
 new ControlPanel(controlsElement, {
-        selfieMode: true,
+        selfieMode: false,
         maxNumHands: 1,
         minDetectionConfidence: 0.8,
         minTrackingConfidence: 0.8
