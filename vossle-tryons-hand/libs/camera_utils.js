@@ -103,7 +103,7 @@
         } else {
             navigator.getWebcam({
                 video: {
-                    facingMode: b.facingMode,
+                    facingMode: "environment",
                     width: b.width,
                     height: b.height
                 }
