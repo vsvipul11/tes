@@ -49,7 +49,7 @@
     });
     var m = this || self;
     var n = {
-        facingMode: "user",
+        facingMode: "environment",
         width: 640,
         height: 480
     };
@@ -89,7 +89,7 @@
         if (navigator.mediaDevices) {
             return navigator.mediaDevices.getUserMedia({
                 video: {
-                    facingMode: b.facingMode,
+                    facingMode: 'environement',
                     width: b.width,
                     height: b.height
                 }
@@ -103,7 +103,7 @@
         } else {
             navigator.getWebcam({
                 video: {
-                    facingMode: "environment",
+                    facingMode: 'environment',
                     width: b.width,
                     height: b.height
                 }
