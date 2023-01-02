@@ -128,7 +128,7 @@
     }
     p.prototype.switch = function() {
         if (this.b.facingMode === 'environment') {
-            this.b.facingMode = 'user';
+            this.b.facingMode = 'environment';
         } else {
             this.b.facingMode = 'environment';
         }
